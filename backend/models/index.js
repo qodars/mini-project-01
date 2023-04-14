@@ -49,5 +49,8 @@ db.store.hasMany(db.product, {
 db.address.hasMany(db.store, {
   foreignKey: 'id_address'
 });
+db.category.hasMany(db.product,{
+  foreignKey: "category_id"
+})
 
 module.exports = db;
