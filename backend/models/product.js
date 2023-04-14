@@ -25,6 +25,8 @@ const Product = (sequelize)=>{
             type:DataTypes.BOOLEAN,
             defaultValue: true
         }
+    },{
+        tableName: 'product'
     })
 }
 module.exports = Product;

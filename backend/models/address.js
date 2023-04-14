@@ -11,6 +11,8 @@ const Address = (sequelize) =>{
             type:DataTypes.STRING,
             allowNull: false
         }
+    },{
+        tableName: 'address'
     })
 }
 module.exports = Address;
