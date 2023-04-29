@@ -47,6 +47,21 @@ const categoryControll ={
                 message: err.message
             })
         }
+    },
+    get: async (req, res) => {
+        try {
+            const categories = await Category.findAll()
+            return res.status(200).json({
+                message: `Data berhasil ditampilkan`,
+                data: categories
+
+            });
+        } catch (err) {
+            console.log(err);
+            return res.status(err.statusCode || 500).json({
+                message: err.message
+            })
+        }
     }
 }
 

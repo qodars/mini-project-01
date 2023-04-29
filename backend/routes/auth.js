@@ -8,5 +8,6 @@ router.post("/register", authController.register);
 router.post("/tambah/category", categoryControll.insert);
 router.patch("/ubah/category/:category_id?", categoryControll.update)
 router.get("/product/get", productController.get)
+router.get("/category/get",categoryControll.get)
 
 module.exports = router;
