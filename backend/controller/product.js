@@ -7,7 +7,7 @@ const productController = {
             const { name } = req.body;
 
             const checkName = await product.findOne({
-                where: { name }
+                where: { name: name}
             });
 
             if (checkName) {
@@ -54,7 +54,7 @@ const productController = {
         try {
             const products = await product.findAll()
             return res.status(200).json({
-                message: `Data berhasil ditampilkan`,
+                message: `Produk berhasil ditampilkan`,
                 data: products
 
             });
