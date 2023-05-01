@@ -54,8 +54,8 @@ const productController = {
         try {
             const order = req.query.order;
             const categoryId = req.query.categoryId;
+            
             const queryProducts = {
-
             }
             if (order) {
                 queryProducts.order =
