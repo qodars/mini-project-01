@@ -7,7 +7,7 @@ const productController = {
             const { name } = req.body;
 
             const checkName = await product.findOne({
-                where: { name: name}
+                where: { name: name }
             });
 
             if (checkName) {
@@ -52,7 +52,20 @@ const productController = {
     },
     get: async (req, res) => {
         try {
-            const products = await product.findAll()
+            const order = req.query.order;
+            const categoryId = req.query.categoryId;
+            const products = await product.findAll(
+
+
+                {
+                    where: {
+                        category_id: categoryId
+                    },
+                    order: [
+                        ['name', order]
+                    ]
+                }
+            )
             return res.status(200).json({
                 message: `Produk berhasil ditampilkan`,
                 data: products

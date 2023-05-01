@@ -24,6 +24,10 @@ const Product = (sequelize)=>{
         status:{
             type:DataTypes.BOOLEAN,
             defaultValue: true
+        },
+        category_id:{
+            type:DataTypes.INTEGER,
+            allowNull:true
         }
     },{
         tableName: 'product'
