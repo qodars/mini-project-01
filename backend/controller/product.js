@@ -54,18 +54,24 @@ const productController = {
         try {
             const order = req.query.order;
             const categoryId = req.query.categoryId;
-            const products = await product.findAll(
+            const queryProducts = {
 
-
-                {
-                    where: {
-                        category_id: categoryId
-                    },
-                    order: [
+            }
+            if (order) {
+                queryProducts.order =
+                    [
                         ['name', order]
                     ]
+            }
+            if (categoryId) {
+                queryProducts.where = {
+                    category_id: categoryId
                 }
-            )
+
+            }
+
+            const products = await product.findAll(queryProducts)
+
             return res.status(200).json({
                 message: `Produk berhasil ditampilkan`,
                 data: products
