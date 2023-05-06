@@ -28,7 +28,11 @@ const Product = (sequelize)=>{
         category_id:{
             type:DataTypes.INTEGER,
             allowNull:true
-        }
+        },
+         thumbnail:{
+             type:DataTypes.STRING,
+            allowNull:true
+         }
     },{
         tableName: 'product'
     })

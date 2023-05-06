@@ -5,16 +5,21 @@ const bodyParser = require('body-parser')
 const app = express();
 
 
-app.use(express.json());
+// app.use(express.json());
 app.use(cors());
-app.use(bodyParser())
+
+const urlencodedParser=(bodyParser.json());
+
+
+app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
+
+
 //db
 const db = require("./models");
 db.sequelize.sync({ alter: true});
 
 //routes
 const { authRoutes } = require('./routes');
-
 
 
 //middleware

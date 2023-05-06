@@ -1,10 +1,15 @@
 const db = require("../models");
 const product = db.product;
 
+
+
+
 const productController = {
     insert: async (req, res) => {
         try {
-            const { name } = req.body;
+            const { name, price, description, qty, category_id, picture } = req.body;
+            res.setHeader('Content-Type', 'application/json');
+            console.log(req.body);
 
             const checkName = await product.findOne({
                 where: { name: name }
@@ -16,7 +21,7 @@ const productController = {
                 })
             }
 
-            await product.create({ name });
+            await product.create({name, price, description, qty, category_id, picture});
 
             return res.status(200).json({
                 message: ` product ${name}, berhasil ditambahkan`
