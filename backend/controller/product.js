@@ -88,6 +88,24 @@ const productController = {
                 message: err.message
             })
         }
-    }
+    },
+    getById: async (req, res) => {
+        try {     
+            const id = req.params.id
+            const products = await product.findByPk(id)
+            
+
+            return res.status(200).json({
+                message: `Produk berhasil ditampilkan`,
+                data: products
+
+            });
+        } catch (err) {
+            console.log(err);
+            return res.status(err.statusCode || 500).json({
+                message: err.message
+            })
+        }
+    }  
 }
 module.exports = productController;

@@ -17,6 +17,7 @@ const upload = ({
         filename: (req, file, cb) => {
             const {originalName} = file;
             fileName = originalName + Date.now();
+            
             const filepict = Date.now() + "_" + Math.round(Math.random() * 1e9);
             cb(null, `${filePrefix}-${filepict}.${file.mimetype.split("/")[1]}`);
         }
