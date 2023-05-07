@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const authController = {
     register: async (req,res) =>{
         try{
-        const { username, email, phone, password, confirm_pass } = req.body;
+        const { username, email, phone, password } = req.body;
 
         const checkUsername = await User.findOne({
             where:{
@@ -45,11 +45,11 @@ const authController = {
             })
         }
 
-        if (password !== confirm_pass) {
-            return res.status(402).json({
-              message: "Penulisan password tidak sama!!"
-            });
-          }
+        // if (password !== confirm_pass) {
+        //     return res.status(402).json({
+        //       message: "Penulisan password tidak sama!!"
+        //     });
+        //   }
 
           if (password.length < 8) {
             return res.status(400).json({
