@@ -1,5 +1,5 @@
 const {DataTypes} = require('sequelize');
-const { sequelize } = require('.');
+
 
 const Category = (sequelize)=>{
     return sequelize.define("category",{
@@ -8,8 +8,9 @@ const Category = (sequelize)=>{
             autoIncrement: true,
             primaryKey: true
         },
-        name:{
-            type: DataTypes.STRING
+        category_name:{
+            type: DataTypes.STRING,
+            allowNull: false,
         }
     },{
         tableName: "category"

@@ -4,22 +4,22 @@ const Category = db.category;
 const categoryControll ={ 
     insert: async (req, res)=>{
         try {
-            const { name } = req.body;
+            const {category_name} = req.body;
             
-            const checkName = await Category.findOne({
-                where:{name}
-            });
+            // const checkName = await CT.findOne({
+            //     where:{name}
+            // });
 
-            if(checkName){
-                return res.status(402).json({
-                    message: `Category dengan nama:${name} sudah ada!!`
-                })
-            }
+            // if(checkName){
+            //     return res.status(402).json({
+            //         message: `Category dengan nama:${name} sudah ada!!`
+            //     })
+            // }nm
 
-            await Category.create({ name });
+            await Category.create({ category_name });
 
             return res.status(200).json({
-                message: ` Category ${name}, berhasil ditambahkan`
+                message: ` Category ${category_name}, berhasil ditambahkan`
             })
         } catch (err) {
             console.log(err);

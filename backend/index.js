@@ -1,17 +1,14 @@
 const express = require('express');
 const port = 8000;
-const cors = require('cors')
-const bodyParser = require('body-parser')
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const app = express();
 
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // app.use(express.json());
-app.use(cors());
-
-const urlencodedParser=(bodyParser.json());
-
-
-app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
 
 
 //db
