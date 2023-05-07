@@ -21,7 +21,11 @@ router.post("/product/create", upload({
     maxSize: 1 * 1024 * 1024,
 }).array("thumbnail"), productController.insert)
 router.get("/product/get/:id", productController.getById)
-
+router.put("/product/update/:id", upload({
+    acceptedFileTypes: ["png", "jpg", "jpeg"],
+    filePrefix: "FILE",
+    maxSize: 1 * 1024 * 1024,
+}).array("thumbnail"), productController.update)
   
 
 module.exports = router;
