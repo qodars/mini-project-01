@@ -37,26 +37,6 @@ const productController = {
         }
     },
     update: async (req, res) => {
-        // try {
-        //     const { name } = req.body;
-        //     const product_id = req.params.product_id
-
-        //     await product.update({ name },
-        //         {
-        //             where: {
-        //                 product_id
-        //             }
-        //         });
-
-        //     return res.status(200).json({
-        //         message: `Data berhasil diubah`
-        //     });
-        // } catch (err) {
-        //     console.log(err);
-        //     return res.status(err.statusCode || 500).json({
-        //         message: err.message
-        //     })
-        // }
         try {
 
             // update produk
