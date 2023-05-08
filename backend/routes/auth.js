@@ -13,19 +13,21 @@ router.post("/register", authController.register);
 router.post("/tambah/category", categoryControll.insert);
 router.patch("/ubah/category/:category_id?", categoryControll.update)
 router.get("/category/get",categoryControll.get)
+
+
 //product
 router.get("/product/get", productController.get)
 router.post("/product/create", upload({
     acceptedFileTypes: ["png", "jpg", "jpeg"],
     filePrefix: "FILE",
     maxSize: 1 * 1024 * 1024,
-}).array("thumbnail"), productController.insert)
+}).single("thumbnail"), productController.insert)
 router.get("/product/get/:id", productController.getById)
 router.put("/product/update/:id", upload({
     acceptedFileTypes: ["png", "jpg", "jpeg"],
     filePrefix: "FILE",
     maxSize: 1 * 1024 * 1024,
-}).array("thumbnail"), productController.update)
+}).single("thumbnail"), productController.update)
   
 
 module.exports = router;

@@ -12,23 +12,16 @@ const productController = {
             const { name, price, description, qty, category_id } = req.body;
             res.setHeader('Content-Type', 'application/json');
             console.log(req.body);
-            let thumbnail = ''
-            const checkName = await product.findOne({
-                where: { name: name }
-            });
 
-            if (checkName) {
-                return res.status(402).json({
-                    message: `Product dengan nama:${name} sudah ada!!`
-                })
-            }
+            let thumbnail = ''
+            
             if (!req.file) {
                 console.log("No file upload");
             } else {
-                console.log(req.file.thumbnail)
-                thumbnail = '/public/' + req.file.thumbnail
-
+                console.log(req.file.filename)
+                thumbnail = 'public/' + req.file.filename
             }
+
             console.log(req.body);
             await product.create({ name, price, description, qty, category_id, thumbnail });
 
@@ -74,21 +67,27 @@ const productController = {
             res.setHeader('Content-Type', 'application/json');
 
             let thumbnail = ''
-            const checkName = await product.findOne({
-                where: { name: name }
-            });
+            
+            //untuk check produk sesuai dengan nama
+            // const checkName = await product.findOne({
+            //     where: { name: name }
+            // });
 
-            if (checkName) {
-                return res.status(402).json({
-                    message: `Product dengan nama:${name} sudah ada!!`
-                })
-            }
+
+            // memberikan kondisi di mana kalo checkname tsb sudah ada di database
+            // if (checkName) {
+            //     return res.status(402).json({
+            //         message: `Product dengan nama:${name} sudah ada!!`
+            //     })
+            // }
+
+
+
             if (!req.file) {
                 console.log("No file upload");
             } else {
-                console.log(req.file.thumbnail)
-                thumbnail = '/public/' + req.file.thumbnail
-
+                console.log(req.file.filename)
+                thumbnail = 'public/' + req.file.filename
             }
 
 
@@ -110,6 +109,7 @@ const productController = {
             });
         }
     },
+    // untuk get produk di database
     get: async (req, res) => {
         try {
             const order = req.query.order;
@@ -130,6 +130,7 @@ const productController = {
 
             }
 
+            // untuk menampilkan hasil produk yang di database yang sudah kita filter
             const products = await product.findAll(queryProducts)
 
             return res.status(200).json({
