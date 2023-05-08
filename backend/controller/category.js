@@ -30,10 +30,10 @@ const categoryControll ={
     },
     update: async (req, res) =>{
         try {
-            const { name } = req.body;
+            const { category_name } = req.body;
             const category_id = req.params.category_id
 
-            await Category.update({ name },
+            await Category.update({ category_name },
                 {where:{
                     category_id
                 }});
