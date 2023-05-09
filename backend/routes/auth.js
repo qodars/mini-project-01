@@ -6,7 +6,7 @@ const {upload} = require("../src/uploader/uploader")
 // const multer = require('multer')
 // const upload = multer()
 
-
+// router untuk register
 router.post("/register", authController.register);
 
 //category
@@ -28,6 +28,7 @@ router.put("/product/update/:id", upload({
     filePrefix: "FILE",
     maxSize: 1 * 1024 * 1024,
 }).single("thumbnail"), productController.update)
+router.delete("/product/delete/:id", productController.deleteById)
   
 
 module.exports = router;

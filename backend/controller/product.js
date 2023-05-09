@@ -14,7 +14,7 @@ const productController = {
             // console.log(req.body);
 
             let thumbnail = ''
-            
+
             // membuat kondisi di mana untuk membaca filename foto yang akan dikirim ke database
             if (!req.file) {
                 console.log("No file upload");
@@ -41,14 +41,14 @@ const productController = {
 
             // update produk
             const { name, price, description, qty, category_id } = req.body;
-            console.log(req.body);
+            // console.log(req.body);
             const id = req.params.id
-         
+
 
             res.setHeader('Content-Type', 'application/json');
 
             let thumbnail = ''
-            
+
             //untuk check produk sesuai dengan nama
             // const checkName = await product.findOne({
             //     where: { name: name }
@@ -135,6 +135,29 @@ const productController = {
 
             return res.status(200).json({
                 message: `Produk berhasil ditampilkan`,
+                data: products
+
+            });
+        } catch (err) {
+            console.log(err);
+            return res.status(err.statusCode || 500).json({
+                message: err.message
+            })
+        }
+    },
+    // untuk delete produk by id
+    deleteById: async (req, res) => {
+        try {
+            const id = req.params.id
+            const products = await product.destroy ({
+                where: {
+                    product_id: id
+                }
+            })
+
+
+            return res.status(200).json({
+                message: `Produk berhasil dihapus`,
                 data: products
 
             });

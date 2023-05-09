@@ -5,7 +5,7 @@ const categoryControll ={
     insert: async (req, res)=>{
         try {
             const {category_name} = req.body;
-            
+          
             // const checkName = await CT.findOne({
             //     where:{name}
             // });
@@ -32,7 +32,7 @@ const categoryControll ={
         try {
             const { name } = req.body;
             const category_id = req.params.category_id
-
+            
             await Category.update({ name },
                 {where:{
                     category_id
