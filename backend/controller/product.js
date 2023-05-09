@@ -11,10 +11,11 @@ const productController = {
             //menambahkan produk
             const { name, price, description, qty, category_id } = req.body;
             res.setHeader('Content-Type', 'application/json');
-            console.log(req.body);
+            // console.log(req.body);
 
             let thumbnail = ''
             
+            // membuat kondisi di mana untuk membaca filename foto yang akan dikirim ke database
             if (!req.file) {
                 console.log("No file upload");
             } else {
@@ -22,7 +23,7 @@ const productController = {
                 thumbnail = 'public/' + req.file.filename
             }
 
-            console.log(req.body);
+            // console.log(req.body);
             await product.create({ name, price, description, qty, category_id, thumbnail });
 
             return res.status(200).json({
@@ -36,26 +37,6 @@ const productController = {
         }
     },
     update: async (req, res) => {
-        // try {
-        //     const { name } = req.body;
-        //     const product_id = req.params.product_id
-
-        //     await product.update({ name },
-        //         {
-        //             where: {
-        //                 product_id
-        //             }
-        //         });
-
-        //     return res.status(200).json({
-        //         message: `Data berhasil diubah`
-        //     });
-        // } catch (err) {
-        //     console.log(err);
-        //     return res.status(err.statusCode || 500).json({
-        //         message: err.message
-        //     })
-        // }
         try {
 
             // update produk
@@ -82,7 +63,7 @@ const productController = {
             // }
 
 
-
+            // membuat kondisi di mana untuk membaca filename foto yang akan dikirim ke database
             if (!req.file) {
                 console.log("No file upload");
             } else {
