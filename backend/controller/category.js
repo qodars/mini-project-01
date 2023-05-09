@@ -30,10 +30,15 @@ const categoryControll ={
     },
     update: async (req, res) =>{
         try {
-            const { name } = req.body;
+            const { category_name } = req.body;
             const category_id = req.params.category_id
+<<<<<<< HEAD
             
             await Category.update({ name },
+=======
+
+            await Category.update({ category_name },
+>>>>>>> e0aa401c8d34026b03c46809dc424f084e449b96
                 {where:{
                     category_id
                 }});
@@ -53,6 +58,24 @@ const categoryControll ={
             const categories = await Category.findAll()
             return res.status(200).json({
                 message: `Data berhasil ditampilkan`,
+                data: categories
+
+            });
+        } catch (err) {
+            console.log(err);
+            return res.status(err.statusCode || 500).json({
+                message: err.message
+            })
+        }
+    },
+    getById: async (req, res) => {
+        try {
+            const id = req.params.id
+            const categories = await Category.findByPk(id)
+
+
+            return res.status(200).json({
+                message: `category berhasil ditampilkan`,
                 data: categories
 
             });
