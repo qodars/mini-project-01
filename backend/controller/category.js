@@ -62,6 +62,24 @@ const categoryControll ={
                 message: err.message
             })
         }
+    },
+    getById: async (req, res) => {
+        try {
+            const id = req.params.id
+            const categories = await Category.findByPk(id)
+
+
+            return res.status(200).json({
+                message: `category berhasil ditampilkan`,
+                data: categories
+
+            });
+        } catch (err) {
+            console.log(err);
+            return res.status(err.statusCode || 500).json({
+                message: err.message
+            })
+        }
     }
 }
 
