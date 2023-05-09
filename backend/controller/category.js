@@ -32,13 +32,8 @@ const categoryControll ={
         try {
             const { category_name } = req.body;
             const category_id = req.params.category_id
-<<<<<<< HEAD
             
-            await Category.update({ name },
-=======
-
             await Category.update({ category_name },
->>>>>>> e0aa401c8d34026b03c46809dc424f084e449b96
                 {where:{
                     category_id
                 }});

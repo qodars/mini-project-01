@@ -157,10 +157,11 @@ const productController = {
 
 
             return res.status(200).json({
-                message: `Produk berhasil dihapus`,
+                message: `Produk berhasil dihapus`, 
                 data: products
-
+                
             });
+            
         } catch (err) {
             console.log(err);
             return res.status(err.statusCode || 500).json({
